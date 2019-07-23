@@ -1,38 +1,27 @@
-Role Name
+activemq_install
 =========
-
-A brief description of the role goes here.
-
-Requirements
-------------
-
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+Downloads and installs activemq. Will create a user named activemq which should be used to run the activemq script.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+The follow variables are used to define the version of activemq downloaded:
+activemq_major_version 
+activemq_minor_version
+activemq_hotfix_version
 
-Dependencies
-------------
+The following variable should not need to be modified as they a constructed using the above three version related variables:
+activemq_version
+activemq_file_name
+activemq_download_url: "https://archive.apache.org/dist/activemq/{{ activemq_version }}/{{ activemq_file_name }}"
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+The location where activemq is installed:
+activemq_install_dir
 
-Example Playbook
-----------------
-
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+The username created and configured to own the installation
+activemq_user
 
 License
 -------
 
-BSD
-
-Author Information
-------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Free
