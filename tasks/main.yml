@@ -1,2 +1,12 @@
 ---
 # tasks file for activemq_install
+
+- name: Check install dir exists
+  file:
+    path: "{{ activemq_install_dir }}"
+    state: directory
+
+- name: Download Apache Activemq {{ activemq_version }}
+  get_url:
+   url: "{{ activemq_download_url }}"
+   dest: "{{ activemq_install_dir }}"
