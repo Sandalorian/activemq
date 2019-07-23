@@ -35,3 +35,10 @@
     owner: "{{ activemq_user }}"
     group: "{{ activemq_user }}"
     recurse: yes
+
+## clean up
+
+- name: Clear up downloaded activemq binary
+  file:
+    path: "{{ activemq_install_dir }}/{{ activemq_file_name }}"
+    state: absent
