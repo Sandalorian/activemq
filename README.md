@@ -10,7 +10,8 @@ Role Variables
 --------------
 
 The follow variables are used to define the version of activemq downloaded:
-activemq_major_version 
+
+activemq_major_version
 activemq_minor_version
 activemq_hotfix_version
 
