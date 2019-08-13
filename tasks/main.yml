@@ -30,7 +30,7 @@
     copy: false
     extra_opts: "--strip-components=1"
   become: true
-  when: create_install_dir_result.changed 
+  when: create_install_dir_result.changed
 
 ## clean up
 
@@ -51,5 +51,3 @@
     group: "{{ activemq_user }}"
     recurse: true
   become: true
-
-
