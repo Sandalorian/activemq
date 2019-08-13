@@ -7,7 +7,7 @@
 - name:
   debug:
     msg: "ActiveMQ appears already installed on path {{ activemq_install_dir }}"
-  when: not isInstalled.stat.exists    
+  when: not isInstalled.stat.exists
 
 - name: Create activemq user
   user:
