@@ -25,7 +25,6 @@ activemq_minor_version
 
 activemq_hotfix_version
 
-
 License
 -------
 
