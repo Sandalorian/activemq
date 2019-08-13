@@ -1,7 +1,4 @@
 ---
-# tasks file for activemq_install
-
-# Create user account used by activemq
 
 - name: Create activemq user
   user:
@@ -17,15 +14,15 @@
 
 - name: Download Apache Activemq {{ activemq_version }}
   get_url:
-   url: "{{ activemq_download_url }}"
-   dest: "{{ activemq_install_dir }}"
+    url: "{{ activemq_download_url }}"
+    dest: "{{ activemq_install_dir }}"
 
 - name: unzip activemq binary
   unarchive:
     src: '{{ activemq_install_dir }}/{{ activemq_file_name }}'
     dest: '{{ activemq_install_dir }}'
-    copy: no
-    extra_opts: "--strip-components=1"    
+    copy: false
+    extra_opts: "--strip-components=1"
 
 - name: change ownership on activemq dir to {{ activemq_user }}
   file:
@@ -34,7 +31,7 @@
     mode: 0755
     owner: "{{ activemq_user }}"
     group: "{{ activemq_user }}"
-    recurse: yes
+    recurse: true
 
 ## clean up
 
