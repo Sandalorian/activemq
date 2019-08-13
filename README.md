@@ -9,6 +9,8 @@ A dedicated user activemq_user is also created and made the ownwer of the unpack
 
 This user can then be used to start activemq.
 
+If the activemq_install_dir already contains a bin/activemq script, all tasks in the role are skipped.
+
 Requirements
 ------------
 
