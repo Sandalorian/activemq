@@ -1,6 +1,10 @@
-activemq_install
+activemq
 =========
-Downloads and installs activemq. Will create a user named activemq which should be used to run the activemq script.
+Downloads activemq 5.15.6 from apache and unpacks to specified activemq_install_dir directory.
+
+A dedicated user activemq_user is also created and made the ownwer of the unpacked binaries.
+
+This user can then be used to start activemq.
 
 Role Variables
 --------------
