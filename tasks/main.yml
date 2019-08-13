@@ -11,11 +11,17 @@
   file:
     path: "{{ activemq_install_dir }}"
     state: directory
+    owner: "{{ activemq_user }}"
+    group: "{{ activemq_user }}"
+  register: create_install_dir_result
+  become: true
 
 - name: Download Apache Activemq {{ activemq_version }}
   get_url:
     url: "{{ activemq_download_url }}"
     dest: "{{ activemq_install_dir }}"
+  become: true
+  when: create_install_dir_result.changed
 
 - name: unzip activemq binary
   unarchive:
@@ -23,6 +29,18 @@
     dest: '{{ activemq_install_dir }}'
     copy: false
     extra_opts: "--strip-components=1"
+  become: true
+  when: create_install_dir_result.changed 
+
+## clean up
+
+- name: Clear up downloaded activemq binary
+  file:
+    path: "{{ activemq_install_dir }}/{{ activemq_file_name }}"
+    state: absent
+  become: true
+  when: create_install_dir_result.changed
+
 
 - name: change ownership on activemq dir to {{ activemq_user }}
   file:
@@ -32,10 +50,6 @@
     owner: "{{ activemq_user }}"
     group: "{{ activemq_user }}"
     recurse: true
+  become: true
 
-## clean up
 
-- name: Clear up downloaded activemq binary
-  file:
-    path: "{{ activemq_install_dir }}/{{ activemq_file_name }}"
-    state: absent
